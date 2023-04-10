@@ -9,14 +9,18 @@ public class CDLL<T> extends DLL<T> {
 
     public CDLL() {
         super();
-        head.setPrev(tail);
-        tail.setNext(head);
+        head = new DNode<T>(null);
+        tail = new DNode<T>(null);
+        head.setNext(tail);
+        tail.setPrev(head);
     }
 
     public CDLL(DNode<T> node) {
         super(node);
-        head.setPrev(tail);
-        tail.setNext(head);
+        head = new DNode<T>(null);
+        tail = new DNode<T>(null);
+        head.setNext(tail);
+        tail.setPrev(head);
     }
 
     @Override
