@@ -135,12 +135,12 @@ public class DLLTest {
     }
 
     @Test
-    public String testPrint() {
+    public void testPrint() {
         DLL<Integer> list = new DLL<>();
         list.insertTail(new DNode<>(1));
         list.insertTail(new DNode<>(2));
         list.insertTail(new DNode<>(3));
-        return list.print();
+        list.print();
     }
 
 }
