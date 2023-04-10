@@ -8,7 +8,7 @@ public class CSLL<T> extends SLL<T> {
     private SNode<T> tail;
     private int size;
 
-    public SLL() {
+    public CSLL() {
             head = null;
             tail = null;
             size = 0;
