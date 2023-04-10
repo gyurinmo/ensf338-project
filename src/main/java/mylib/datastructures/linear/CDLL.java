@@ -4,6 +4,9 @@ import src.main.java.mylib.datastructures.nodes.DNode;
 import src.main.java.mylib.datastructures.linear.DLL;
 
 public class CDLL<T> extends DLL<T> {
+    private DNode<T> head;
+    private DNode<T> tail;
+
     public CDLL() {
         super();
         head.setPrev(tail);
@@ -16,7 +19,7 @@ public class CDLL<T> extends DLL<T> {
         tail.setNext(head);
     }
 
-    @Override 
+    @Override
     public void insertHead(DNode<T> node) {
         super.insertHead(node);
         head.setPrev(tail);
