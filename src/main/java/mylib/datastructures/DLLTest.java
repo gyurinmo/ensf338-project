@@ -1,9 +1,7 @@
 package src.main.java.mylib.datastructures;
 
 import org.junit.Test;
-import static org.jnit.Assert.*;
-
-import java.beans.Transient;
+import static org.junit.Assert.*;
 
 import src.main.java.mylib.datastructures.nodes.DNode;
 
@@ -137,7 +135,7 @@ public class DLLTest {
     }
 
     @Test
-    public void testPrint() {
+    public String testPrint() {
         DLL<Integer> list = new DLL<>();
         list.insertTail(new DNode<>(1));
         list.insertTail(new DNode<>(2));
