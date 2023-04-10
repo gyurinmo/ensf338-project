@@ -12,7 +12,8 @@ import java.beans.Transient;
 public class CDLLTest {
     private CDLL<Integer> cdll;
 
-    @BeforeEachvoid setUp() {
+    @BeforeEach
+    void setUp() {
         cdll = new CDLL<>();
     }
 
