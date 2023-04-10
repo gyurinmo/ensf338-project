@@ -9,12 +9,6 @@ public class CSLL<T> extends SLL<T> {
     private int size;
 
     public CSLL() {
-            head = null;
-            tail = null;
-            size = 0;
-        }
-
-    public CSLL() {
         super();
     }
 
@@ -85,7 +79,7 @@ public class CSLL<T> extends SLL<T> {
         SNode<T> curr = head;
         while (curr.getNext() != head) {
             if (curr.getNext().equals(node)) {
-                curr.setNext(curr.geetNext().getNext());
+                curr.setNext(curr.getNext().getNext());
                 size--;
                 return;
             }
