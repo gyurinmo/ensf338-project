@@ -4,6 +4,15 @@ import src.main.java.mylib.datastructures.nodes.SNode;
 import src.main.java.mylib.datastructures.linear.SLL;
 
 public class CSLL<T> extends SLL<T> {
+    private SNode<T> head;
+    private SNode<T> tail;
+    private int size;
+
+    public SLL() {
+            head = null;
+            tail = null;
+            size = 0;
+        }
 
     public CSLL() {
         super();
@@ -14,7 +23,7 @@ public class CSLL<T> extends SLL<T> {
         head.setNext(head);
     }
 
-    @Override 
+    @Override
     public void insertTail(SNode<T> node) {
         if (tail == null) {
             head = node;
@@ -28,7 +37,7 @@ public class CSLL<T> extends SLL<T> {
         size++;
     }
 
-    @Override 
+    @Override
     public void deleteHead() {
         if (head != null) {
             head = head.getNext();
@@ -40,7 +49,7 @@ public class CSLL<T> extends SLL<T> {
         }
     }
 
-    @Override 
+    @Override
     public void deleteTail() {
         if (size == 0) {
             return;
@@ -59,8 +68,8 @@ public class CSLL<T> extends SLL<T> {
         tail = curr;
         size--;
     }
-    
-    @Override 
+
+    @Override
     public void delete(SNode<T> node) {
         if (size == 0) {
             return;
