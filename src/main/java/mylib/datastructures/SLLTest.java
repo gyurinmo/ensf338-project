@@ -106,11 +106,11 @@ public class SLLTest {
         list.insertHead(new SNode<>(2));
         list.insertHead(new SNode<>(5));
         list.sort();
-        assertEquals(1, (int) list.getHead().getData());
-        assertEquals(2, (int) list.getHead().getNext().getData());
-        assertEquals(3, (int) list.getHead().getNext().getNext().getData());
-        assertEquals(4, (int) list.getHead().getNext().getNext().getNext().getData());
-        assertEquals(5, (int) list.getHead().getNext().getNext().getNext().getNext().getData());
+        Assertions.assertEquals(1, (int) list.getHead().getData());
+        Assertions.assertEquals(2, (int) list.getHead().getNext().getData());
+        Assertions.assertEquals(3, (int) list.getHead().getNext().getNext().getData());
+        Assertions.assertEquals(4, (int) list.getHead().getNext().getNext().getNext().getData());
+        Assertions.assertEquals(5, (int) list.getHead().getNext().getNext().getNext().getNext().getData());
 
     }
 
@@ -123,7 +123,7 @@ public class SLLTest {
         list.clear();
         assertNull(list.getHead());
         assertNull(list.tail);
-        assertEquals(0, list.getSize());
+        Assertions.assertEquals(0, list.getSize());
 
     }
 
@@ -140,7 +140,7 @@ public class SLLTest {
         list.print();
 
         String expectedOutput = "List length: 3\nSorted status: false\nList content: 1 2 3 \n";
-        assertEquals(expectedOutput, outContent.toString());
+        Assertions.assertEquals(expectedOutput, outContent.toString());
 
         System.setOut(System.out);
     }
