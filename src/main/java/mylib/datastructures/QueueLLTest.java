@@ -1,6 +1,6 @@
 package src.main.java.mylib.datastructures;
 
-import orgg.junit.Test;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.beans.Transient;
@@ -43,7 +43,7 @@ public class QueueLLTest {
 
         try {
             queue.insertHead(new SNode<>("A"));
-            fail("Excpected UnsupportedOperationException");
+            fail("Expected UnsupportedOperationException");
         } catch (UnsupportedOperationException e) {
 
         }
