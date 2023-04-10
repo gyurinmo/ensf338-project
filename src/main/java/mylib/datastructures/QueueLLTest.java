@@ -1,4 +1,4 @@
-package src.main.java.mylib.datastructures.linear;
+package src.main.java.mylib.datastructures;
 
 import orgg.junit.Test;
 import static org.junit.Assert.*;
