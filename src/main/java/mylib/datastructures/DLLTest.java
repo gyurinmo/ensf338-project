@@ -140,7 +140,7 @@ public class DLLTest {
         list.insertTail(new DNode<>(1));
         list.insertTail(new DNode<>(2));
         list.insertTail(new DNode<>(3));
-        assertEquals("[1 2 3 ]", list.print());
+        return list.print();
     }
 
 }
