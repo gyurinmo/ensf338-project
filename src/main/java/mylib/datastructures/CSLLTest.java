@@ -1,4 +1,4 @@
-package src.main.java.mylib.datastructures.linear;
+package src.main.java.mylib.datastructures;
 
 import org.junit.Test;
 import src.main.java.mylib.datastructures.linear.CSLL;
