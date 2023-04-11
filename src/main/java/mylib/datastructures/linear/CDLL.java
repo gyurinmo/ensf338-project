@@ -1,7 +1,6 @@
 package src.main.java.mylib.datastructures.linear;
 
 import src.main.java.mylib.datastructures.nodes.DNode;
-import src.main.java.mylib.datastructures.linear.DLL;
 
 public class CDLL<T> extends DLL<T> {
     private DNode<T> head;
@@ -65,3 +64,4 @@ public class CDLL<T> extends DLL<T> {
         tail.setNext(head);
     }
 }
+
