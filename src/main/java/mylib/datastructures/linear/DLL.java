@@ -94,6 +94,10 @@ public class DLL<T> {
         } 
     }
 
+    private boolean isSorted() {
+        return false;
+    }
+
     public DNode<T> search(DNode<T> node) {
         DNode<T> curr = head;
         while (curr != null) {
@@ -159,7 +163,7 @@ public class DLL<T> {
             sorted = true;
             DNode<T> curr = head;
             while (curr.getNext() != null) {
-                if (curr.getData().compareTo(curr.getNext().getData()) > 0) {
+                if (((Comparable<T>) curr.getData()).compareTo(curr.getNext().getData()) > 0) {
                     swap(curr, curr.getNext());
                     sorted = false;
 
@@ -170,6 +174,9 @@ public class DLL<T> {
         }
     }
     
+    private void swap(DNode<T> curr, DNode<T> next) {
+    }
+
     public void clear() {
         head = null;
         tail = null;
