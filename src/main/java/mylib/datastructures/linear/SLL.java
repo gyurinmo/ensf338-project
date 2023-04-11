@@ -158,7 +158,7 @@ public class SLL<T> {
             SNode<T> curr = head;
             SNode<T> prev = null;
             while (curr.next != null) {
-                if (curr.data.compareTo(curr.next.data) > 0) {
+                if (((Comparable<T>) curr.data).compareTo(curr.next.data) > 0) {
                     sorted = false;
                     SNode<T> temp = curr.next;
                     curr.next = temp.next;
@@ -194,5 +194,13 @@ public class SLL<T> {
             curr = curr.next;
         }
         System.out.println();
+    }
+
+    private String isSorted() {
+        return null;
+    }
+
+    public SNode<T> getHead() {
+        return null;
     }
 }
