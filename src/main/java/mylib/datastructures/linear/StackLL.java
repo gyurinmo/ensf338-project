@@ -1,9 +1,7 @@
 package src.main.java.mylib.datastructures.linear;
 
 import src.main.java.mylib.datastructures.nodes.SNode;
-import src.main.java.mylib.datastructures.linear.SLL;
-
-import javax.management.RuntimeErrorException;
+import java.util.EmptyStackException;
 
 public class StackLL<T> extends SLL<T> {
 
@@ -39,7 +37,7 @@ public class StackLL<T> extends SLL<T> {
     public T pop() {
         SNode<T> top = getHead();
         if (top == null) {
-            throw new RuntimeErrorException("Stack is empty");
+            throw new EmptyStackException();
         }
         deleteHead();
         return top.getData();
@@ -48,7 +46,7 @@ public class StackLL<T> extends SLL<T> {
     public T peek() {
         SNode<T> top = getHead();
         if (top == null) {
-            throw new RuntimeErrorException("Stack is empty");
+            throw new EmptyStackException();
         }
         return top.getData();
     }
