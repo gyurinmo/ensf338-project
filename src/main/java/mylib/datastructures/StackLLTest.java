@@ -1,18 +1,28 @@
 package src.main.java.mylib.datastructures;
 
-import static org.junit.Assert.*;
+import src.main.java.mylib.datastructures.linear.SLL;
+import src.main.java.mylib.datastructures.linear.StackLL;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.beans.Transient;
+import java.util.EmptyStackException;
 
-import javax.management.RuntimeErrorException;
-import org.junit.Test;
-import src.main.java.mylib.datastructures.linear.StackLL;
+import static org.junit.Assert.*;
 
 public class StackLLTest {
 
-    @Test
-    public void testPushPop() {
-        StackLL<Integer> stack = new StackLL<>();
+    private StackLL<Integer> stack;
+
+    @Before 
+    public void setUp() {
+        stack = new Stack<>();
+
+    }
+
+    @Test 
+    public void testPushAndPop() {
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -21,24 +31,22 @@ public class StackLLTest {
         assertEquals(Integer.valueOf(1), stack.pop());
     }
 
-    @Test
+    @Test 
     public void testPeek() {
-        StackLL<String> stack = new StackLL<>();
-        stack.push("first");
-        stack.push("second");
-        assertEquals("second", stack.peek());
-        assertEquals("second", stack.peek());
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        assertEquals(Integer.valueOf(3), stack.peek());
+        assertEquals(Integer.valueOf(3), stack.peek()); 
     }
 
-    @Test(expected = RuntimeErrorException.class)
+    @Test(expected = EMptyStackException.class)
     public void testPopEmptyStack() {
-        StackLL<Double> stack = new StackLL<>();
         stack.pop();
     }
 
-    @Test(expected = RuntimeErrorException.class)
+    @Test(expected = EmptyStackException.class)
     public void testPeekEmptyStack() {
-        StackLL<Character> stack = new StackLL<>();
         stack.peek();
     }
 }
