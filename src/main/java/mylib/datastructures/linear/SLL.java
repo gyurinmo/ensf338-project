@@ -65,9 +65,7 @@ public class SLL<T> {
             insertHead(node);
             return;
         }
-        if (!isSorted()) {
-            sort();
-        }
+       
         SNode<T> curr = head;
         SNode<T> prev = null;
         while (curr != null && ((Comparable<T>) curr.getData()).compareTo(node.getData()) < 0) {
