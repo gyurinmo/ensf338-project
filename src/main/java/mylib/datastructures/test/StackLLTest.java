@@ -1,4 +1,4 @@
-package src.main.java.mylib.datastructures;
+package src.main.java.mylib.datastructures.test;
 
 import java.util.EmptyStackException;
 
