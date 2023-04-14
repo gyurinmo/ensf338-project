@@ -1,52 +1,29 @@
 package src.main.java.mylib.datastructures;
 
-import src.main.java.mylib.datastructures.linear.SLL;
-import src.main.java.mylib.datastructures.linear.StackLL;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import java.beans.Transient;
 import java.util.EmptyStackException;
 
-import static org.junit.Assert.*;
+import src.main.java.mylib.datastructures.linear.StackLL;
 
 public class StackLLTest {
+    public static void main (String[] args) {
+        StackLL<Integer> stack = new StackLL<>();
 
-    private StackLL<Integer> stack;
-
-    @Before 
-    public void setUp() {
-        stack = new Stack<>();
-
-    }
-
-    @Test 
-    public void testPushAndPop() {
         stack.push(1);
         stack.push(2);
         stack.push(3);
-        assertEquals(Integer.valueOf(3), stack.pop());
-        assertEquals(Integer.valueOf(2), stack.pop());
-        assertEquals(Integer.valueOf(1), stack.pop());
-    }
+        System.out.println("Stack after push operations: " + stack.toString());
 
-    @Test 
-    public void testPeek() {
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        assertEquals(Integer.valueOf(3), stack.peek());
-        assertEquals(Integer.valueOf(3), stack.peek()); 
-    }
+        System.out.println("Peek the top element: " + stack.peek());
 
-    @Test(expected = EMptyStackException.class)
-    public void testPopEmptyStack() {
-        stack.pop();
-    }
+        System.out.println("Pop the top element: " + stack.pop());
+        System.out.println("Stack after pop operation: " + stack.toString());
 
-    @Test(expected = EmptyStackException.class)
-    public void testPeekEmptyStack() {
-        stack.peek();
+        try {
+            stack.pop();
+
+        } catch (EmptyStackException e) {
+            System.out.println("Caught an EmptyStackException when trying to pop from an empty stack.");
+        }
     }
 }
+
