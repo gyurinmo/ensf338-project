@@ -6,7 +6,7 @@ import src.main.java.mylib.datastructures.trees.BST;
 public class BSTTest {
     public static void main(String[] args) {
 
-    /** Test BST Class methods */
+    // Test BST Class methods
     System.out.println();
     System.out.println();
     System.out.println("***Testing BST Class...***");
@@ -104,6 +104,7 @@ public class BSTTest {
 
     System.out.println("Breadth-first traversal of BST:");
 
+    // end of the test
     System.out.println();
     System.out.println("***BST Class Testing Completed!***");
     

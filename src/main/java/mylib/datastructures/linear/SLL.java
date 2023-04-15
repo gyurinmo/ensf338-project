@@ -22,6 +22,8 @@ public class SLL {
         this.sorted = true;
     }
 
+    public SNode getHead() { return this.head; }
+
     public void insertHead(SNode node) {
         if (head == null) {
             head = node;
@@ -46,6 +48,7 @@ public class SLL {
         size++;
     }
 
+  
     public void insert(SNode node, int position) {
         if (position < 0 || position > size) {
             throw new IndexOutOfBoundsException();

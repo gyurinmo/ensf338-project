@@ -6,7 +6,7 @@ import src.main.java.mylib.datastructures.trees.AVL;
 public class AVLTest {
     public static void main(String[] args) {
 
-    /** Test AVL Class methods */
+    // Test AVL Class methods
     System.out.println();
     System.out.println();
     System.out.println("***Testing AVL Class...***");
@@ -15,7 +15,7 @@ public class AVLTest {
     AVL avl1 = new AVL(2);
 
     System.out.println();
-    System.out.println("A AVL object is successfully created via AVL overloaded constructor AVL(int val)!");
+    System.out.println("An AVL object is successfully created via AVL overloaded constructor AVL(int val)!");
 
     // test getter
     System.out.println("Expected data: 2, Actual data: " + avl1.getRoot());
@@ -25,14 +25,14 @@ public class AVLTest {
     AVL avl2 = new AVL(node8);
 
     System.out.println();
-    System.out.println("A AVL object is successfully created via AVL overloaded constructor AVL(TNode obj)!");
+    System.out.println("An AVL object is successfully created via AVL overloaded constructor AVL(TNode obj)!");
     System.out.println("Expected data: 0, Actual data: " + avl2.getRoot());
 
     // create a new AVL object by using default constructor
     AVL avl3 = new AVL();
 
     System.out.println();
-    System.out.println("A AVL object is successfully created via AVL default constructor!");    
+    System.out.println("An AVL object is successfully created via AVL default constructor!");    
     System.out.println("Expected data: null, Actual data: " + avl3.getRoot());
 
     // test setters
@@ -98,13 +98,14 @@ public class AVLTest {
         System.out.println("Node with value 6 was successfully deleted from the AVL object");
     }
 
-    // test inherited method printBF() from BST class
+    // test inherited method printBF() from AVL class
     System.out.println();
-    System.out.println("Testing inherited method printBF() from BST class...");
+    System.out.println("Testing inherited method printBF() from AVL class...");
 
     System.out.println("Breadth-first traversal of AVL object:");
     avl4.printBF();
  
+    // end of the test
     System.out.println();
     System.out.println("***AVL Class Testing Completed!***");
     

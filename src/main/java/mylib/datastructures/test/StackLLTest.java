@@ -34,7 +34,7 @@ public class StackLLTest {
         System.out.println();    
 
 
-        // test inherited getHead() method from SLL class via peek() method
+        // test peek() method
         stack1.peek();
         System.out.println();
         System.out.println("peek() successfully returned head value of previosuly crated StackLL object \"stack1\".");
@@ -167,9 +167,9 @@ public class StackLLTest {
 
         // expected result
         System.out.println("Expected Result: ");
-        System.out.println("List Length: 3");
+        System.out.println("Stack Length: 3");
         System.out.println("Sorted Status: sorted");
-        System.out.println("List Content: 3 7 9");
+        System.out.println("Stack Content: 3 7 9");
         System.out.println();
 
         // actual result displayed by print()

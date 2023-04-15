@@ -6,7 +6,7 @@ public class DLL {
     private DNode head;
     private DNode tail;
     private int size;
-    public boolean sorted;
+    private boolean sorted;
 
     public DLL() {
         this.head = null;
@@ -214,7 +214,6 @@ public class DLL {
             System.out.print(curr.getData() + " ");
             curr = curr.getNext();
         }
-    
         System.out.println();
     }
 }

@@ -13,10 +13,6 @@ public class CSLL extends SLL {
         this.tail = null;
         this.size = 0;
         this.sorted = true;
-
-        if (head != null) {
-            tail.setNext(head);
-        }
     }
 
     public CSLL(SNode node) {
