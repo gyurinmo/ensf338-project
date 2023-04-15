@@ -1,36 +1,29 @@
 package src.main.java.mylib.datastructures.nodes;
 
-public class DNode<T> {
-    private T data;
-    private DNode<T> next;
-    private DNode<T> prev;
+public class DNode {
+    private int data;
+    private DNode prev;
+    private DNode next;
 
-    public DNode(T data) {
-        this.data = data;
-        this.next = null;
+    public DNode() {
+        this.data = 0;
         this.prev = null;
+        this.next = null;
     }
 
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
+    public DNode(int data) {
         this.data = data;
+        this.prev = null;
+        this.next = null;
     }
 
-    public DNode<T> getNext() {
-        return next;
-    }
-    public void setNext(DNode<T> next) {
-        this.next = next;
-    }
+    // getters
+    public int getData() { return data; }
+    public DNode getPrev() { return prev; }
+    public DNode getNext() { return next; }
 
-    public DNode<T> getPrev() {
-        return prev;
-    }
-
-    public void setPrev(DNode<T> prev) {
-        this.prev = prev;
-    }
+    // setters
+    public void setData(int data) { this.data = data; }
+    public void setPrev(DNode prev) { this.prev = prev; }
+    public void setNext(DNode next) { this.next = next; }
 }
