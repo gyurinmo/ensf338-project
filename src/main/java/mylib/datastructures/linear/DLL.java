@@ -2,39 +2,48 @@ package src.main.java.mylib.datastructures.linear;
 
 import src.main.java.mylib.datastructures.nodes.DNode;
 
-public class DLL<T> {
-    private DNode<T> head;
-    private DNode<T> tail;
+public class DLL {
+    private DNode head;
+    private DNode tail;
     private int size;
+    public boolean sorted;
 
     public DLL() {
-        head = null;
-        tail = null;
-        size = 0;
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+        this.sorted = true;
     }
 
-    public DLL(DNode<T> head) {
+    public DLL(DNode head) {
         this.head = head;
         this.tail = head;
-        head.setPrev(null);
-        tail.setNext(null);
-        size = 1;
+        this.size = 1;
+        this.sorted = true;
+
+        DNode current = head;
+        DNode previous = null;
+        while (current != null) {
+            current.setPrev(previous);
+            previous = current;
+            current = current.getNext();
+        }
     }
 
-    public void insertHead(DNode<T> node) {
+    public void insertHead(DNode node) {
         if (head == null) {
             head = node;
             tail = node;
-
         } else {
             node.setNext(head);
             head.setPrev(node);
             head = node;
         }
+        this.sorted = false;
         size++;
     }
 
-    public void insertTail(DNode<T> node) {
+    public void insertTail(DNode node) {
         if(tail == null) {
             head = node;
             tail = node;
@@ -43,153 +52,169 @@ public class DLL<T> {
             tail.setNext(node);
             tail = node;
         }
+        this.sorted = false;
         size++;
     }
 
-    public void insert(DNode<T> node, int position) {
+    public void insert(DNode node, int position) {
         if(position < 0 || position > size) {
             throw new IndexOutOfBoundsException();
-        }
-        if (position == 0) {
+        } else if (position == 0) {
             insertHead(node);
         } else if (position == size) {
             insertTail(node);
         } else {
-            DNode<T> curr = head;
-            for (int i = 0; i < position; i++) {
-                curr = curr.getNext();
+            DNode current = head;
+            for (int i = 0; i < position - 1; i++) {
+                current = current.getNext();
             }
-            node.setNext(curr);
-            node.setPrev(curr.getPrev());
-            curr.getPrev().setNext(node);
-            curr.setPrev(node);
+            node.setNext(current.getNext());
+            node.setPrev(current);
+            current.getNext().setPrev(node);
+            current.setNext(node);
             size++;
+            this.sorted = false;
         }
-    }
-
-    public void sortedInsert(DNode<T> node) {
-        if (head == null) {
-            insertHead(node);
-            return;
-        }
-        if (!isSorted()) {
-            sort();
-        }
-        DNode<T> curr = head;
-        DNode<T> prev = null;
-        while (curr != null && ((Comparable<T>) curr.getData()).compareTo(node.getData()) < 0) {
-            prev = curr;
-            curr = curr.getNext();
-        }
-        if (prev == null) {
-            insertHead(node);
-        } else if (curr == null) {
-            insertTail(node);
-        } else {
-            node.setNext(curr);
-            node.setPrev(prev);
-            prev.setNext(node);
-            curr.setPrev(node);
-            size++;
-        } 
-    }
-
-    private boolean isSorted() {
-        return false;
-    }
-
-    public DNode<T> search(DNode<T> node) {
-        DNode<T> curr = head;
-        while (curr != null) {
-            if (curr.getData().equals(node.getData())) {
-                return curr;
-            }
-            curr = curr.getNext();
-        }
-        return null;
-    }
-
-    public void deleteHead() {
-        if (head != null) {
-            head = head.getNext();
-            if (head != null) {
-                head.setPrev(null);
-            } else {
-                tail = null;
-
-            }
-            size--;
-        }
-    }
-    public void deleteTail() {
-        if (size == 0) {
-            return;
-        }
-        if (size == 1) {
-            head = null;
-            tail = null;
-            size = 0;
-            return;
-        }
-        tail = tail.getPrev();
-        tail.setNext(null);
-        size--;
-    }
-
-    public void delete(DNode<T> node) {
-        if (size == 0) {
-            return;
-        }
-        if (head.equals(node)) {
-            deleteHead();
-            return;
-        }
-        if (tail.equals(node)) {
-            deleteTail();
-            return;
-        }
-        node.getPrev().setNext(node.getNext());
-        node.getNext().setPrev(node.getPrev());
-        size--;
-
     }
 
     public void sort() {
-        if (size <= 1) {
+        if (!sorted) {
+            DNode curr = head;
+            while (curr != null) {
+                DNode next = curr.getNext();
+                while (next != null) {
+                    if (curr.getData() > next.getData()) {
+                        int temp = curr.getData();
+                        curr.setData(next.getData());
+                        next.setData(temp);
+                    }
+                    next = next.getNext();
+                }
+                curr = curr.getNext();
+            }
+            sorted = true;
+        }
+    }
+
+    public void sortedInsert(DNode node) {
+        if (head == null) {
+            this.head = node;
+            this.tail = node;
+            size++;
+            this.sorted = true;
             return;
         }
-        boolean sorted = false;
-        while (!sorted) {
-            sorted = true;
-            DNode<T> curr = head;
-            while (curr.getNext() != null) {
-                if (((Comparable<T>) curr.getData()).compareTo(curr.getNext().getData()) > 0) {
-                    swap(curr, curr.getNext());
-                    sorted = false;
-
-                } else {
-                    curr = curr.getNext();
-                }
-            }
+        if (!sorted) {
+            sort();
         }
+        
+        DNode prev = null;
+        DNode curr = head;
+        while (curr != null && node.getData() > curr.getData()) {
+            prev = curr;
+            curr = curr.getNext();
+        }
+        
+        if (prev == null) {  
+            node.setNext(head);
+            head.setPrev(node); 
+            head = node;
+        } else if (curr == null) { 
+            tail.setNext(node);
+            node.setPrev(tail); 
+            tail = node;
+        } else {  
+            prev.setNext(node);
+            node.setPrev(prev); 
+            node.setNext(curr);
+            curr.setPrev(node); 
+        }
+        size++;
+        this.sorted = true;
     }
     
-    private void swap(DNode<T> curr, DNode<T> next) {
+    public DNode search(DNode node) {
+        DNode current = head;
+    
+        while (current != null) {
+            if (current.getData() == node.getData()) {
+                return current;
+            }
+            current = current.getNext();
+        }
+        return null;
+    }
+    
+    public void deleteHead() {
+        if (head == null) {
+            return;
+        }
+        if (head == tail) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.getNext();
+            head.setPrev(null); 
+        }
+        size--;
     }
 
+    public void deleteTail() {
+        if (tail == null) {
+            return;
+        }
+        if (head == tail) {
+            head = null;
+            tail = null;
+        } else {
+            tail = tail.getPrev(); 
+            tail.setNext(null); 
+        }
+        size--;
+    }
+
+    public void delete(DNode node) {
+        if (head == null) {  
+            System.out.println("The list is empty.");
+            System.out.println();
+            return;
+        }
+        if (node.equals(head)) {  
+            deleteHead();
+            return;
+        }
+        if (node.equals(tail)) {
+            deleteTail();
+            return;
+        }
+        
+        DNode prev = node.getPrev();
+        DNode next = node.getNext();
+        
+        prev.setNext(next);
+        next.setPrev(prev);
+        
+        size--;
+    }
+        
     public void clear() {
         head = null;
         tail = null;
         size = 0;
+        sorted = true;
     }
 
     public void print() {
-        System.out.print("[");
-        DNode<T> curr = head;
+        System.out.println("List length: " + size);
+        System.out.println("Sorted status: " + (sorted ? "sorted" : "not sorted"));
+        System.out.print("List content: ");
+    
+        DNode curr = head;
         while (curr != null) {
             System.out.print(curr.getData() + " ");
             curr = curr.getNext();
         }
-        System.out.println("]");
+    
+        System.out.println();
     }
 }
