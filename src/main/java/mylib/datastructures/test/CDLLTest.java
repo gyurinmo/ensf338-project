@@ -5,36 +5,226 @@ import src.main.java.mylib.datastructures.linear.CDLL;
 import src.main.java.mylib.datastructures.nodes.DNode;
 
 public class CDLLTest {
-
-    public static void main(String[] args) {
-        CDLL<Integer> list = new CDLL<>();
-
-        DNode<Integer> node1 = new DNode<>(1);
-        DNode<Integer> node2 = new DNode<>(2);
-        DNode<Integer> node3 = new DNode<>(3);
-
-        list.insertHead(node1);
-        list.insertTail(node2);
-        list.insert(node3, 1);
-
-        System.out.println("List after adding nodes:");
-        printList(list);
+    public static void main (String[] args) {
+    
+        // Test CDLL Class methods 
+        System.out.println();
+        System.out.println();
+        System.out.println("***Testing CDLL Class...***");
+        System.out.println();
+    
+    
+        // create a new CDLL object by using overloaded constructor CDLL(DNode head) which calls DLL(DNode node)
+        CDLL cdll1 = new CDLL(new DNode(2));
+    
+        System.out.println("Overloaded constructor CDLL(DNode head) created a new CDLL object \"cdll1\".");
+        System.out.println();
+    
+        // expected result
+        System.out.println("Expected Result: ");
+        System.out.println("Size of csll1: 1"); 
+        System.out.println("Value of head node of csll2: 2"); 
+        System.out.println("Value of tail node of csll2: 2"); 
+        System.out.println();
+    
+        // actual result 
+        System.out.println("Actual Result: ");
+        System.out.println("Size of csll1: " + cdll1.getSize()); 
+        System.out.println("Value of head node of csll2: " + cdll1.getHead().getData());
+        System.out.println("Value of tail node of csll2: " + cdll1.getTail().getData());
+        System.out.println();
+    
+    
+        // create a new CDLL object by using default constructor CDLL()
+        CDLL cdll2 = new CDLL();
+        System.out.println();
+        System.out.println("Default constructor CDLL() successfully created a new CDLL object \"cdll2\".");
+        System.out.println();
+    
+        // expected result
+        System.out.println("Expected Result: ");
+        System.out.println("Size of csll1: 0"); 
+        System.out.println("Value of head node of csll2: null"); 
+        System.out.println("Value of tail node of csll2: null"); 
+        System.out.println();
+    
+        // actual result
+        System.out.println("Actual Result: ");
+        System.out.println("Size of csll1: " + cdll2.getSize()); 
+        System.out.println("Value of head node of csll2: " + cdll2.getHead());
+        System.out.println("Value of tail node of csll2: " + cdll2.getTail());
+        System.out.println();
+        System.out.println();
+    
+        // test intereted and modified insertHead(DNode node) method from DLL class
+        cdll2.insertHead(new DNode(5));
+        System.out.println("insertHead(DNode node) method successfully inserted 5 to the head of \"cdll2\".");
+    
+        // test inherited and modified insertHead(DNode node) method from DLL class
+        cdll2.insertHead(new DNode(2));
+        System.out.println("insertHead(DNode node) method successfully inserted 2 to the head of \"cdll2\".");
+    
+        // test inherited and modified insertTail(DNode node) method from DLL class
+        cdll2.insertTail(new DNode(8));
+        System.out.println("insertTail(DNode node) method successfully inserted 8 to the tail of \"cdll2\".");
+    
+        // test inherited and modified insert(DNode node, int position) method from DLL class
+        cdll2.insert(new DNode(3), 2);
+        System.out.println("insertHead(DNode node) method successfully inserted 3 to position 2 of \"cdll2\".");
+        System.out.println();
         
-        list.deleteHead();
-        list.deleteTail();
-        
-        System.out.println("List after deleting nodes:");
-        printList(list);
-
-    }
-
-    private static void printList(CDLL<Integer> list) {
-        DNode<Integer> node = list.getHead().getNext();
-        while (node != list.getTail()) {
-            System.out.print(node.getData() + " ");
-            node = node.getNext();
+        // expected result
+        System.out.println("Expected Result: ");
+        System.out.println("List Length : 4");
+        System.out.println("Sorted Status : not sorted");
+        System.out.println("List Content: 2 5 3 8");
+        System.out.println();
+    
+        // actual result displayed by test()
+        System.out.println("Actual Result: ");
+        cdll2.print();
+        System.out.println();
+    
+    
+        // test inherited and modified sort() method from DLL class
+        cdll2.sort();
+        System.out.println();
+        System.out.println("sort() method successfully sorted data in \"cdll2\" in an ascending order.");
+        System.out.println();
+    
+        // expected result
+        System.out.println("Expected Result: ");
+        System.out.println("List Length : 4");
+        System.out.println("Sorted Status : sorted");
+        System.out.println("List Content: 2 3 5 8");
+        System.out.println();
+    
+        // actual result displayed by test()
+        System.out.println("Actual Result: ");
+        cdll2.print();
+        System.out.println();
+    
+    
+        // test inherited and modified sortedInsert(DNode node) method from DLL class
+        DNode node2 = new DNode(7);
+        System.out.println();
+        System.out.println("DNode(int data) method successfully created a DNode object with data 7.");;
+        cdll2.sortedInsert(node2);
+        System.out.println("sortedInsert(DNode node) method successfully inserted a new DNode with \"data\" 7 in a sorted order.");
+        System.out.println();
+    
+        // expected result
+        System.out.println("Expected Result: ");
+        System.out.println("List Length : 5");
+        System.out.println("Sorted Status : sorted");
+        System.out.println("List Content: 2 3 5 7 8");
+        System.out.println();
+    
+        // actual result displayed by test()
+        System.out.println("Actual Result: ");
+        cdll2.print();
+        System.out.println();
+    
+    
+        // test inherited and modified search(DNode node) method from DLL class, successful case
+        System.out.println();
+        System.out.println("Testing search(DNode node) method by using previously created DLL object \"cdll2\"...");
+        System.out.println();
+    
+        DNode nodeToSearch1 = new DNode(5);
+        System.out.println("DNode(int data) method successfully created a DNode object with data 5.");;
+    
+        // expected result
+        System.out.print("Expected Search Result : ");
+        System.out.println("Found node with value 5");
+      
+        // actual result
+        System.out.print("Actual Search Result : ");
+        DNode foundNode1 = cdll2.search(nodeToSearch1);
+        if (foundNode1 != null) {
+            System.out.println("Found node with value " + foundNode1.getData());
+        } else {
+            System.out.println("Node not found");
+        }
+    
+        // test inherited and modified search(DNode node) method from DLL class, not successful case
+        DNode nodeToSearch2 = new DNode(1);
+        System.out.println();
+        System.out.println("Node(int data) method successfully created a Node object with data 1.");;
+    
+        // expected result
+        System.out.print("Expected Search Result : ");
+        System.out.println("Node not found");
+      
+        // actual result
+        System.out.print("Actual Search Result : ");
+        DNode foundNode2 = cdll2.search(nodeToSearch2);
+        if (foundNode2 != null) {
+            System.out.println("Found node with value " + foundNode2.getData());
+        } else {
+            System.out.println("Node not found");
         }
         System.out.println();
+    
+        // test inherited and modified deleteHead() method from DLL class
+        cdll2.deleteHead();
+        System.out.println();
+        System.out.println("deleteHead() method successfully deleted the head of \"cdll2\".");
+        System.out.println();
+    
+        // expected result
+        System.out.println("Expected Result: ");
+        System.out.println("List Length : 4");
+        System.out.println("Sorted Status : sorted");
+        System.out.println("List Content: 3 5 7 8");
+        System.out.println();
+    
+        // actual result displayed by print()
+        System.out.println("Actual Result: ");
+        cdll2.print();
+        System.out.println();
+    
+    
+        // test inherited and modified deleteTail() method from DLL class
+        cdll2.deleteTail();
+        System.out.println();
+        System.out.println("deleteTail() method successfully deleted the tail of \"cdll2\".");
+        System.out.println();
+    
+        // expected result
+        System.out.println("Expected Result: ");
+        System.out.println("List Length : 3");
+        System.out.println("Sorted Status : sorted");
+        System.out.println("List Content: 3 5 7");
+        System.out.println();
+    
+        // actual result displayed by print()
+        System.out.println("Actual Result: ");
+        cdll2.print();
+        System.out.println();
+    
+    
+        // test inherited and modified clear() method from DLL class
+        cdll2.clear();
+        System.out.println();
+        System.out.println("clear() method successfully removed all nodes in the previously created SLL object \"cdll2\".");
+        System.out.println();
+    
+        // expected result
+        System.out.print("Expected Result: ");
+        System.out.println("List length: 0");
+        System.out.println("Sorted Status: sorted");
+        System.out.println("List content: empty");
+        System.out.println();
+        
+        // actual result displayed by print()
+        System.out.print("Actual Result: ");
+        cdll2.print();
+    
+        // end of  the test
+        System.out.println();
+        System.out.println("***CDLL Class Testing Completed!***");
+        
+        }
     }
-
-}
+    
