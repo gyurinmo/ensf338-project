@@ -1,4 +1,4 @@
-package src.main.java.mylib.datastructures.test;
+package src.test;
 
 import src.main.java.mylib.datastructures.nodes.TNode;
 
