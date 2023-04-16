@@ -28,17 +28,18 @@ public class CDLL extends DLL {
             previous = current;
             current = current.getNext();
         }
-        
         if (tail != null) {
             tail.setNext(head);
             head.setPrev(tail);
         }
     }
 
+
     public DNode getHead() {return this.head;}
     public DNode getTail() {return this.tail;}
     public int getSize() {return this.size;}
     
+
     @Override
     public void insertHead(DNode node) {
         if (head == null) {
@@ -132,14 +133,12 @@ public class CDLL extends DLL {
         if (!sorted) {
             sort();
         }
-    
         DNode prev = null;
         DNode curr = head;
         while (curr != tail && node.getData() > curr.getData()) {
             prev = curr;
             curr = curr.getNext();
         }
-    
         if (prev == null && node.getData() <= head.getData()) { // new head
             node.setNext(head);
             head.setPrev(node);
@@ -163,7 +162,6 @@ public class CDLL extends DLL {
     @Override
     public DNode search(DNode node) {
         DNode current = head;
-        
         do {
             if (current.getData() == node.getData()) {
                 return current;
@@ -248,24 +246,22 @@ public class CDLL extends DLL {
  
     @Override
     public void print() {
-        System.out.println("List length: " + size);
-        System.out.println("Sorted status: " + (sorted ? "sorted" : "not sorted"));
-        System.out.print("List content: ");
-    
         if (head == null) {
-            System.out.println("empty");
+            System.out.println("The list is empty.");
             return;
+        } else {
+            System.out.println("List length: " + size);
+            System.out.println("Sorted Status: " + (sorted ? "sorted" : "not sorted"));
+            System.out.print("List content: ");
+            DNode curr = head;
+            do {
+                System.out.print(curr.getData() + " ");
+                curr = curr.getNext();
+            } while (curr != head && curr != null);
+        
+            System.out.println();
         }
-    
-        DNode current = head;
-        do {
-            System.out.print(current.getData() + " ");
-            current = current.getNext();
-        } while (current != head && current != null);
-    
-        System.out.println();
     }
-    
     
 
 }

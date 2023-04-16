@@ -27,6 +27,7 @@ public class StackLL extends SLL {
 
     public void push(SNode node) {
         super.insertHead(node);
+        node.setNext(head);
         this.head = node;
         size++;
         this.sorted = false;
@@ -62,20 +63,21 @@ public class StackLL extends SLL {
     }
 
     @Override
-    public SNode search(SNode node) {
-        SNode result = super.search(node);
-        return result;
-    }
-    
-    @Override
     public void sort() {
         super.sort();
         this.sorted = true;
     }
 
     @Override
+    public SNode search(SNode node) {
+        SNode result = super.search(node);
+        return result;
+    }
+
+    @Override
     public void delete(SNode node) {
         super.delete(node);
+        size--;
     }
     
     @Override
@@ -88,17 +90,21 @@ public class StackLL extends SLL {
     
     @Override
     public void print() {
-        System.out.println("Stack size: " + size);
-        System.out.println("Sorted status: " + (sorted ? "sorted" : "not sorted"));        
-        System.out.print("Stack content (top to bottom): ");
-        SNode curr = head;
-        while (curr != null) {
-            System.out.print(curr.getData() + " ");
-            curr = curr.getNext();
+        if (head == null) {
+            System.out.println("The list is empty.");
+        } else {
+            System.out.println("Stack size: " + size);
+            System.out.println("Sorted status: " + (sorted ? "sorted" : "not sorted"));        
+            System.out.print("Stack content (top to bottom): ");
+            SNode curr = head;
+            while (curr != null) {
+                System.out.print(curr.getData() + " ");
+                curr = curr.getNext();
+            }
+            System.out.println();
         }
-        System.out.println();
-    }  
-
+    }
+    
     @Override
     public void insertTail(SNode node) {
     }

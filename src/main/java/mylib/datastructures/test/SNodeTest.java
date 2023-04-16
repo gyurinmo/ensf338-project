@@ -37,7 +37,7 @@ public class SNodeTest {
         System.out.println("Expected data : 2, Actual data : " + node2.getData());
         System.out.println("Expected next node's data : 3, Actual next node's data : " + node2.getNext().getData());
         
-
+        // end of the test
         System.out.println();
         System.out.println("***SNode Class Testing Completed!***");
         

@@ -44,7 +44,7 @@ public class StackLLTest {
         System.out.println("Expected head: 5");
 
         // actual result displayed by print()
-        System.out.print("Actual Result: ");
+        System.out.print("Actual head: ");
         System.out.println(stack1.peek());
         System.out.println();
 
@@ -57,13 +57,13 @@ public class StackLLTest {
     
         // test inherited insertHead(SNode node) method from SLL class via push(SNode node) method
         stack2.push(new SNode(3));
-        System.out.println("push(SNode node) method successfully inserted 9 to the top of \"stack2\".");
-
-        stack2.push(new SNode(1));
         System.out.println("push(SNode node) method successfully inserted 3 to the top of \"stack2\".");
 
-        stack2.push(new SNode(9));
+        stack2.push(new SNode(1));
         System.out.println("push(SNode node) method successfully inserted 1 to the top of \"stack2\".");
+
+        stack2.push(new SNode(9));
+        System.out.println("push(SNode node) method successfully inserted 9 to the top of \"stack2\".");
 
         // expected result
         System.out.println();
@@ -96,6 +96,7 @@ public class StackLLTest {
         System.out.println("Actual Result: ");
         stack2.print();
         System.out.println();
+
 
         // test sortedPush(SNode node)
         SNode node1 = new SNode(7);
@@ -139,6 +140,7 @@ public class StackLLTest {
             System.out.println("Node not found");
         }
 
+
         // test inherited search(SNode node) from SLL calss, not successful case
         SNode nodeToSearch2 = new SNode(6);
         System.out.println();
@@ -162,14 +164,34 @@ public class StackLLTest {
         // test inherited deleteHead() method from SLL via pop() method
         stack2.pop();
         System.out.println();
-        System.out.println("pop() method successfully deleted the head of \"stack2\".");
+        System.out.println("pop() method successfully removed the head of \"stack2\".");
         System.out.println();
 
         // expected result
         System.out.println("Expected Result: ");
         System.out.println("Stack Length: 3");
         System.out.println("Sorted Status: sorted");
-        System.out.println("Stack Content: 3 7 9");
+        System.out.println("Stack Content (top to bottom): 3 7 9");
+        System.out.println();
+
+        // actual result displayed by print()
+        System.out.println("Actual Result: ");
+        stack2.print();
+        System.out.println();
+
+
+        // test delete(DNode node)
+        SNode nodeToDelete = stack2.getHead().getNext(); 
+        stack2.delete(nodeToDelete);
+        System.out.println();
+        System.out.println("delete(SNode node) method successfully removed 7 from \"stack2\".");
+        System.out.println();
+        
+        // expected result
+        System.out.println("Expected Result: ");
+        System.out.println("Stack Length: 2");
+        System.out.println("Sorted Status: sorted");
+        System.out.println("Stack Content (top to bottom): 3 9");
         System.out.println();
 
         // actual result displayed by print()
@@ -180,17 +202,17 @@ public class StackLLTest {
 
         // test inherited clear() method from SLL class
         stack2.clear();
+        System.out.println();
         System.out.println("clear() method successfully removed all contents in the previously created StackLL object \"stack2\".");
         System.out.println();
 
-        System.out.println("Expected Result: ");
-        System.out.println("Stack size: 0");
-        System.out.println("Sorted Status: sorted");
-        System.out.println("Stack Content: ");
-        System.out.println();
+        // expected result
+        System.out.println("Expected Result: The list is empty.");
 
-        System.out.println("Actual Result: ");
+        // actual result displaed by print()
+        System.out.print("Actual Result: ");
         stack2.print();
+        System.out.println();
 
         // end of  the test
         System.out.println();

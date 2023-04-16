@@ -41,7 +41,7 @@ public class DNodeTest {
         System.out.println("Expected prev node's data : 4, Actual next node's data : " + node2.getPrev().getData());
         System.out.println("Expected next node's data : 6, Actual next node's data : " + node2.getNext().getData());
         
-
+        // end of the test
         System.out.println();
         System.out.println("***SNode Class Testing Completed!***");
         

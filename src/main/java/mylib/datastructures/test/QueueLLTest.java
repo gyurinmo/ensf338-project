@@ -64,11 +64,14 @@ public class QueueLLTest {
         queue2.enqueue(new SNode(9));
         System.out.println("enqueue(SNode node) method successfully inserted 9 to the bottom of \"queue2\".");
        
+        queue2.enqueue(new SNode(5));
+        System.out.println("enqueue(SNode node) method successfully inserted 5 to the bottom of \"queue2\".");
+       
         // expected result
         System.out.println();
         System.out.println("Expected Result: ");
-        System.out.println("Queue size: 3");
-        System.out.println("Queue content (front to rear): 3 1 9");
+        System.out.println("Queue size: 4");
+        System.out.println("Queue content (front to rear): 3 1 9 5");
         System.out.println();
 
         // actual result displayed by test()
@@ -125,8 +128,8 @@ public class QueueLLTest {
 
         // expected result
         System.out.println("Expected Result: ");
-        System.out.println("Queue Length: 2");
-        System.out.println("Queue Content (front to rear): 1 9 ");
+        System.out.println("Queue size: 3");
+        System.out.println("Queue Content (front to rear): 1 9 5");
         System.out.println();
 
         // actual result displayed by print()
@@ -134,20 +137,20 @@ public class QueueLLTest {
         queue2.print();
         System.out.println();
 
-
+        
         // test inherited clear() method from SLL class
         queue2.clear();
         System.out.println();
         System.out.println("clear() method successfully removed all contents in the previously created QueueLL object \"queue2\".");
         System.out.println();
 
-        System.out.println("Expected Result: ");
-        System.out.println("Queue size: 0");
-        System.out.println("Queue Content (front to rear): ");
-        System.out.println();
+        // expected result
+        System.out.println("Expected Result: The list is empty.");
 
-        System.out.println("Actual Result: ");
+        // actual result displaed by print()
+        System.out.print("Actual Result: ");
         queue2.print();
+        System.out.println();
 
 
         // end of  the test

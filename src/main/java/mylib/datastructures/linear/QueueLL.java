@@ -54,35 +54,6 @@ public class QueueLL extends SLL {
         head = head.getNext();
         size--;
     }
-    
-    @Override
-    public void delete(SNode node) {
-        if (head == null) {  
-            System.out.println("The list is empty.");
-            System.out.println();
-            return;
-        }
-        if (node.equals(head)) {  
-            deleteHead();
-            return;
-        }
-        if (node.equals(tail)) {  
-            deleteTail();
-            return;
-        }
-        
-        SNode prev = head;
-        while (prev.getNext() != null && !prev.getNext().equals(node)) {
-            prev = prev.getNext();
-        }
-        
-        if (prev.getNext() == null) {  
-            return;
-        }
-        
-        prev.setNext(prev.getNext().getNext());
-        size--;
-    }  
 
     @Override
     public void clear() {
@@ -94,7 +65,10 @@ public class QueueLL extends SLL {
 
     @Override
     public void print() {
-        System.out.println("Queue length: " + size);
+        if (head == null) {
+            System.out.println("The list is empty.");
+        } else {
+            System.out.println("Queue length: " + size);
         System.out.print("Queue content (front to rear): ");
         SNode curr = head;
         while (curr != null) {
@@ -102,8 +76,9 @@ public class QueueLL extends SLL {
             curr = curr.getNext();
         }
         System.out.println();
+        }
     }
-    
+
     @Override
     public void insert(SNode node, int position) {
     }
@@ -123,6 +98,10 @@ public class QueueLL extends SLL {
     @Override
     public void deleteTail() {
     }
+
+    @Override
+    public void delete(SNode node) {
+    }  
 
     
 }

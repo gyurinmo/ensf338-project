@@ -32,10 +32,12 @@ public class CSLL extends SLL {
         }
     }
 
+    
     public SNode getHead() {return this.head;}
     public SNode getTail() {return this.tail;}
     public int getSize() {return this.size;}
     
+
     @Override
     public void insertHead(SNode node) {
         if (head == null) {
@@ -94,6 +96,30 @@ public class CSLL extends SLL {
     }
 
     @Override
+    public void sort() {
+        if (!sorted) {
+            if (head == null || head == tail) {
+                sorted = true;
+                return;
+            }
+            SNode curr = head;
+            do {
+                SNode next = curr.getNext();
+                while (next != head) {
+                    if (curr.getData() > next.getData()) {
+                        int temp = curr.getData();
+                        curr.setData(next.getData());
+                        next.setData(temp);
+                    }
+                    next = next.getNext();
+                }
+                curr = curr.getNext();
+            } while (curr != head);
+            sorted = true;
+        }
+    }
+
+    @Override
     public void sortedInsert(SNode node) {
         if (head == null) {
             this.head = node;
@@ -106,7 +132,6 @@ public class CSLL extends SLL {
         if (!sorted) {
             sort();
         }
-        
         SNode prev = null;
         SNode curr = head;
         do {
@@ -189,55 +214,24 @@ public class CSLL extends SLL {
             System.out.println();
             return;
         }
-        
         if (node.equals(head)) {  
             deleteHead();
             return;
         }
-        
         SNode prev = head;
         while (prev.getNext() != head && !prev.getNext().equals(node)) {
             prev = prev.getNext();
         }
-        
         if (prev.getNext() == head) {  
             return;
         }
-        
         if (prev.getNext().equals(tail)) {  
             tail = prev;
         }
-        
         prev.setNext(prev.getNext().getNext());
         size--;
     }
     
-    @Override
-    public void sort() {
-        if (!sorted) {
-            if (head == null || head == tail) {
-                sorted = true;
-                return;
-            }
-            
-            SNode curr = head;
-            do {
-                SNode next = curr.getNext();
-                while (next != head) {
-                    if (curr.getData() > next.getData()) {
-                        int temp = curr.getData();
-                        curr.setData(next.getData());
-                        next.setData(temp);
-                    }
-                    next = next.getNext();
-                }
-                curr = curr.getNext();
-            } while (curr != head);
-            
-            sorted = true;
-        }
-    }
-
     @Override
     public void clear() {
         if (head == null) {
@@ -266,5 +260,4 @@ public class CSLL extends SLL {
             System.out.println();
         }
     }
-
 }

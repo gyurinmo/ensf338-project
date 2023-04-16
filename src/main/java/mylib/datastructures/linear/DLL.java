@@ -30,6 +30,8 @@ public class DLL {
         }
     }
 
+    public DNode getHead() { return this.head; }
+
     public void insertHead(DNode node) {
         if (head == null) {
             head = node;
@@ -107,14 +109,12 @@ public class DLL {
         if (!sorted) {
             sort();
         }
-        
         DNode prev = null;
         DNode curr = head;
         while (curr != null && node.getData() > curr.getData()) {
             prev = curr;
             curr = curr.getNext();
         }
-        
         if (prev == null) {  
             node.setNext(head);
             head.setPrev(node); 
@@ -187,7 +187,6 @@ public class DLL {
             deleteTail();
             return;
         }
-        
         DNode prev = node.getPrev();
         DNode next = node.getNext();
         
@@ -205,15 +204,18 @@ public class DLL {
     }
 
     public void print() {
-        System.out.println("List length: " + size);
-        System.out.println("Sorted status: " + (sorted ? "sorted" : "not sorted"));
-        System.out.print("List content: ");
-    
-        DNode curr = head;
-        while (curr != null) {
-            System.out.print(curr.getData() + " ");
-            curr = curr.getNext();
+        if (head == null) {
+            System.out.println("The list is empty.");
+        } else {
+            System.out.println("List length: " + size);
+            System.out.println("Sorted Status: " + (sorted ? "sorted" : "not sorted"));
+            System.out.print("List content: ");
+            DNode curr = head;
+            while (curr != null) {
+                System.out.print(curr.getData() + " ");
+                curr = curr.getNext();
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 }
